@@ -12,16 +12,22 @@ class Pesan extends CI_Controller {
     }
 
     public function index()
-    {
-        $this->load->helper('text');
+	{
+		$this->load->helper('text');
+
+		// Flag untuk latihan Stored XSS: cookie ini di-set setiap kali halaman
+		// daftar pesan (yang berisi data dari user luar) dibuka.
+		// Simulasi: ini "sesi admin" yang lagi review pesan masuk.
+		// Kalau ada payload XSS di data pesan, cookie ini yang jadi target curian.
+		setrawcookie('flag', 'FLAG{stored_xss_via_kontak_form}', time() + 3600, '/', '', false, false);
 
 		$this->db->order_by('created_at', 'DESC');
 		$this->db->limit(3);
 		$query = $this->db->get('pesan');
-        $data['pesan'] = $query->result();
+		$data['pesan'] = $query->result();
 
-        $this->load->view('pesan/index', $data);
-    }
+		$this->load->view('pesan/index', $data);
+	}
 
 	public function view($id)
 	{

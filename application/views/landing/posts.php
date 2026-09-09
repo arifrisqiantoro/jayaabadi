@@ -109,6 +109,19 @@
 
         <h4 class="section-title">Postingan Terbaru</h4>
 
+        <!-- Form pencarian -->
+        <form method="get" action="<?= base_url('landing/posts') ?>" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="keyword" class="form-control" placeholder="Cari judul postingan..." value="<?= $keyword ?? '' ?>">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
+
+        <?php if (!empty($keyword)): ?>
+            <!-- VULNERABLE: Reflected XSS - $keyword di-echo langsung tanpa htmlspecialchars/esc() (disengaja untuk vuln lab) -->
+            <p class="text-muted">Hasil pencarian untuk: <?= $keyword ?></p>
+        <?php endif; ?>
+
         <div class="d-flex flex-column gap-3">
             <?php if (!empty($posts)): ?>
                 <?php foreach ($posts as $post): ?>

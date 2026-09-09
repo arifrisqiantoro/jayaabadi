@@ -30,18 +30,20 @@ class Login extends CI_Controller {
         $row = $query->row();
          
         if ($row) {
-            // VULNERABLE: Session fixation (Disengaja untuk Vuln Lab)
-            $this->session->set_userdata('user_id', $row->id);
-            $this->session->set_userdata('username', $row->username);
-            $this->session->set_userdata('role', $row->role);
-            
-            redirect('dashboard/index/' . $row->id);
-        } else {
+			// VULNERABLE: Session fixation (Disengaja untuk Vuln Lab)
+			$this->session->set_userdata('user_id', $row->id);
+			$this->session->set_userdata('username', $row->username);
+			$this->session->set_userdata('role', $row->role);
 
-            $this->session->set_flashdata('error', 'Username atau Password salah!');
-            redirect('login');
+			// Flag untuk latihan Reflected XSS - cookie ini sengaja TIDAK diset HttpOnly
+			// supaya bisa "dicuri" lewat document.cookie di payload XSS
+			setrawcookie('flag', 'FLAG{reflected_xss_c00kie_st34l1ng}', time() + 3600, '/', '', false, false);
 
-        }
+			redirect('dashboard/index/' . $row->id);
+		} else {
+			$this->session->set_flashdata('error', 'Username atau Password salah!');
+			redirect('login');
+		}
     }
 
     public function logout()

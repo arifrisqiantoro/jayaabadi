@@ -41,14 +41,26 @@ class Landing extends CI_Controller {
 
 public function posts()
 {
-	$this->load->helper('text');
+    $this->load->helper('text');
     $per_page     = 6;
     $current_page = max(1, (int) $this->input->get('page'));
     $offset       = ($current_page - 1) * $per_page;
 
-    $total       = $this->db->count_all('posts');
+    // VULNERABLE: Reflected XSS (disengaja untuk vuln lab)
+    // keyword diambil mentah dari GET tanpa filter XSS, lalu di-echo langsung ke view tanpa escaping
+    $keyword = $this->input->get('keyword', FALSE);
+
+    // Hitung total dulu pakai query builder terpisah (reset otomatis)
+    if (!empty($keyword)) {
+        $this->db->like('title', $keyword);
+    }
+    $total       = $this->db->count_all_results('posts');
     $total_pages = ceil($total / $per_page);
 
+    // Baru ambil data postingan dengan query builder yang fresh
+    if (!empty($keyword)) {
+        $this->db->like('title', $keyword);
+    }
     $this->db->order_by('created_at', 'DESC');
     $this->db->limit($per_page, $offset);
     $posts = $this->db->get('posts')->result_array();
@@ -58,6 +70,7 @@ public function posts()
         'posts'        => $posts,
         'current_page' => $current_page,
         'total_pages'  => $total_pages,
+        'keyword'      => $keyword,
     ]);
     $this->load->view('templates/footer');
 }
