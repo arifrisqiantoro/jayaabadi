@@ -106,7 +106,13 @@ public function posts()
 	{
 		$this->load->helper('text');
 
-		$post = $this->db->get_where('posts', ['id' => $id])->row();
+		// VULNERABLE: SQL Injection (UNION-based, disengaja untuk vuln lab)
+		// $id langsung dipakai di query manual tanpa binding/escaping,
+		// dan hasilnya (title, category, content) ditampilkan langsung di halaman tanpa esc()
+		// -> bisa dipakai buat UNION SELECT untuk bocorin isi tabel lain (misal users)
+		$sql = "SELECT * FROM posts WHERE id = '$id'";
+		$query = $this->db->query($sql);
+		$post = $query->row();
 
 		if (!$post) {
 			show_404();
