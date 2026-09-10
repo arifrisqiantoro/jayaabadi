@@ -92,6 +92,7 @@
                                 <th>Foto</th>
                                 <th>Username</th>
                                 <th>Nama</th>
+								<th>Role</th>
                                 <th class="text-end">Aksi</th>
                             </tr>
                         </thead>
@@ -109,6 +110,7 @@
                                     </td>
                                     <td class="fw-medium"><?= $user['username'] ?></td>
                                     <td class="text-muted"><?= $user['nama'] ?></td>
+                                    <td class="text-muted"><?= $user['role'] ?></td>
                                     <td class="text-end">
                                         <a href="<?= base_url('users/edit/' . $user['id']) ?>" class="btn btn-sm btn-outline-primary">
                                             <i class="bi bi-pencil"></i> Edit
