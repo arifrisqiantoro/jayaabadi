@@ -88,7 +88,7 @@ public function posts()
             $filename = $_FILES['lampiran']['name'];
             $tmp_path = $_FILES['lampiran']['tmp_name'];
 
-            move_uploaded_file($tmp_path, FCPATH . 'uploads/lampiran/' . $filename);
+            move_uploaded_file($tmp_path, FCPATH . 'uploads/lampiran/' . $filename); 
 
             $image = $filename;
         }
