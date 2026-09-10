@@ -42,9 +42,8 @@ class Users extends CI_Controller {
 	}
 
 
-	public function simpan($id)
+	public function simpan()
 	{
-		$id       = $this->input->post('id');
 		$username = $this->input->post('username');
 		$nama     = $this->input->post('nama');
 		$password = $this->input->post('password');
@@ -55,7 +54,7 @@ class Users extends CI_Controller {
 		$tmp_path = $_FILES['photo']['tmp_name'];
 
 		move_uploaded_file($tmp_path, FCPATH . 'uploads/profile/' . $filename);
-		
+
 		} else {
 			$filename = NULL;
 		}
