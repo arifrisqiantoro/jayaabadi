@@ -48,6 +48,23 @@
                                 <textarea class="form-control bg-light" rows="5" readonly><?= $pesan->pesan ?></textarea>
                             </div>
 
+							 <div class="mb-3">
+                                <label class="form-label fw-semibold">Pesan</label>
+                                <textarea class="form-control bg-light" rows="5" readonly><?= $pesan->pesan ?></textarea>
+                            </div>
+
+							<div class="mb-3">
+                                <label class="form-label fw-semibold">Lampiran</label>
+                                <?php if (!empty($pesan->lampiran)) : ?>
+									<div class="mt-2">
+										<a href="<?= base_url('uploads/lampiran/' . $pesan->lampiran) ?>" target="_blank" class="btn btn-outline-primary">
+											<i class="bi bi-paperclip me-1"></i> Lihat Lampiran
+										</a>
+									</div>
+                            </div>
+
+
+
                             <div class="d-flex justify-content-end mt-4">
                                 <button type="button" class="btn btn-secondary px-4" onclick="window.history.back()">
                                     <i class="bi bi-arrow-left me-1"></i> Kembali
