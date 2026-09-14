@@ -61,8 +61,10 @@
 											<i class="bi bi-paperclip me-1"></i> Lihat Lampiran
 										</a>
 									</div>
+								<?php else : ?>
+									<p class="text-muted">Tidak ada lampiran.</p>
+								<?php endif; ?>
                             </div>
-
 
 
                             <div class="d-flex justify-content-end mt-4">
