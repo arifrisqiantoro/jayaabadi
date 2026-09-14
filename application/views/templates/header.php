@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>PT Jaya Abadi</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="<?= base_url('assets/favicon.ico'); ?>" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<?= base_url('/public/css/styles.css'); ?>" rel="stylesheet" />
+        <style>
+            /* Kustomisasi tambahan untuk navbar putih, tinggi lebih ramping, dan logo lebih besar */
+            #mainNav.navbar-custom-white {
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+                background-color: #ffffff !important;
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            }
+            #mainNav.navbar-custom-white .navbar-nav .nav-item .nav-link {
+                color: #2c3e50 !important;
+            }
+            #mainNav.navbar-custom-white .navbar-nav .nav-item .nav-link:hover {
+                color: #1abc9c !important;
+            }
+            #mainNav.navbar-custom-white .navbar-toggler {
+                color: #2c3e50;
+                border-color: #2c3e50;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-custom-white text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand py-0" href="<?= base_url('/'); ?>">
+                <img src="<?= base_url('assets/img/logo/logo.png'); ?>" alt="Logo PT Jaya Abadi" height="75" class="d-inline-block align-middle">
+            </a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= base_url('landing/posts'); ?>">Postingan</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= base_url('landing/about'); ?>">Tentang</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= base_url('landing/contact'); ?>">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
