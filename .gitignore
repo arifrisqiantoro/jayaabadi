@@ -34,5 +34,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/database.php
 application/config/config.php
 uploads/lampiran/*
+!uploads/lampiran/.gitkeep
 uploads/profile/*
+!uploads/profile/.gitkeep
 uploads/posts/*
+!uploads/posts/.gitkeep
