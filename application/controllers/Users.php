@@ -33,7 +33,7 @@ class Users extends CI_Controller {
 		$this->load->view('users/edit', $data);
 	}
 
-	public function edit_profile()
+	public function edit_profile($id)
 	{
 		$query = $this->db->get_where('users', array('id' => $id));
 		$data['user'] = $query->row();
