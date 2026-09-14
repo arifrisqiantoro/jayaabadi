@@ -9,6 +9,10 @@ class Users extends CI_Controller {
         $this->load->library('session');
 		$this->load->database();
         $this->load->helper('url');
+
+		 if (!$this->session->userdata('user_id')) {
+            redirect('login');
+        }
     }
 
     public function index()
